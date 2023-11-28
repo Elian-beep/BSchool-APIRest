@@ -14,10 +14,10 @@ public interface StudentRepository extends MongoRepository<Student, String> {
 
     public List<Student> findByNameNot(String name);
 
-    public List<Student> findByNameAndLastname(String name, String lastName);
+    public List<Student> findByNameAndLastName(String name, String lastName);
 
     public List<Student> findByLastNameOrCpf(String lastName, String cpf);
 
-    @Query("{ $or: [{lastName: ?0 }, {cpf: ?1}] }")
-    public List<Student> encontrarSobrenomeOuCpf(String lastName, String cpf);
+//    @Query("{ $or: [{lastName: ?0 }, {cpf: ?1}] }")
+//    public List<Student> encontrarSobrenomeOuCpf(String lastName, String cpf);
 }

@@ -1,17 +1,15 @@
 package br.com.kihan.BSchool.controller;
 
-import br.com.kihan.BSchool.StudentService;
+import br.com.kihan.BSchool.service.StudentService;
 import br.com.kihan.BSchool.dto.StudentDTO;
 import br.com.kihan.BSchool.entity.Address;
 import br.com.kihan.BSchool.entity.Student;
 import br.com.kihan.BSchool.httpClient.CepHttpClient;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

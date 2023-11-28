@@ -1,4 +1,4 @@
-package br.com.kihan.BSchool;
+package br.com.kihan.BSchool.service;
 
 import br.com.kihan.BSchool.entity.Student;
 import br.com.kihan.BSchool.repository.StudentRepository;
