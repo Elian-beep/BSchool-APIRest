@@ -1,8 +1,10 @@
 package br.com.kihan.BSchool.controller;
 
 import br.com.kihan.BSchool.dto.AuthenticationDTO;
+import br.com.kihan.BSchool.dto.LoginResponseDTO;
 import br.com.kihan.BSchool.dto.RegisterDTO;
 import br.com.kihan.BSchool.entity.User;
+import br.com.kihan.BSchool.infra.security.TokenService;
 import br.com.kihan.BSchool.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO authenticationDTO){
         var usernamePassword = new UsernamePasswordAuthenticationToken(authenticationDTO.login(), authenticationDTO.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
+        var token = tokenService.generateToken((User) auth.getPrincipal());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")

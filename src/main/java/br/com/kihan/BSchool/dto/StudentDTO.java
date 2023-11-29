@@ -21,5 +21,5 @@ public class StudentDTO {
     private String name;
     private String lastName;
     private String cpf;
-    private String cep;
+//    private String cep;
 }

@@ -38,8 +38,8 @@ public class StudentController {
     public ResponseEntity<Student> insert(@RequestBody @Valid StudentDTO studentDTO){
         Student student = new Student(studentDTO);
 
-        Address address = cepHttpClient.getAddressByCep(studentDTO.getCep());
-        student.setAddress(address);
+//        Address address = cepHttpClient.getAddressByCep(studentDTO.getCep());
+//        student.setAddress(address);
 
         studentService.insert(student);
         return ResponseEntity.created(null).body(student);
